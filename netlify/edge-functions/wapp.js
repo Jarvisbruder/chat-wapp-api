@@ -5,7 +5,7 @@ export default async (request, context) => {
     const verify_token = Deno.env.get("VERIFY_TOKEN");
 
   
-    if (request.httpMethod === 'GET' &&
+    if (
     request.queryStringParameters["hub.mode"] === "subscribe" &&
     request.queryStringParameters["hub.verify_token"] === verify_token) {
 

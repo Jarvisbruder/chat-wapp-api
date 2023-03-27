@@ -34,7 +34,7 @@ exports.handler = async (event, context) => {
 
       axios({
         method: "POST", // Required, HTTP method, a string, e.g. POST, GET
-        url: "https://graph.facebook.com/v12.0/" + phone_number_id + "/messages?access_token=" + token,
+        url: "https://graph.facebook.com/v16.0/" + phone_number_id + "/messages?access_token=" + token,
         data: {
           messaging_product: "whatsapp",
           to: from,
