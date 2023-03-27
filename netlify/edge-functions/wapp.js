@@ -5,17 +5,7 @@ export default async (request, context) => {
     const verify_token = Deno.env.get("VERIFY_TOKEN");
 
   
-    if (request.httpMethod === 'GET' &&
-    request.queryStringParameters["hub.mode"] === "subscribe" &&
-    request.queryStringParameters["hub.verify_token"] === verify_token) {
-
-      return new Response(JSON.stringify(
-        {status: 200,
-         body: request.queryStringParameters["hub.challenge"],
-        })
-    );
-  
-    } else if (request.httpMethod === 'POST' && request.body) {
+ if (request.httpMethod === 'POST' && request.body) {
   
       const body = JSON.parse(request.body);
   
