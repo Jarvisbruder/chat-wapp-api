@@ -10,7 +10,7 @@ export default async (request, context) => {
     request.queryStringParameters["hub.mode"] === "subscribe" &&
     request.queryStringParameters["hub.verify_token"] === verify_token) {
   
-      return new Response.status(request.queryStringParameters["hub.challenge"])
+      return new Response(request.queryStringParameters["hub.challenge"])
   
     } else if (request.httpMethod === 'POST' && request.body) {
   
