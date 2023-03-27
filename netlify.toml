@@ -1,5 +1,5 @@
-[build]
-  command = "npm start"
+#[build]
+#  command = "npm start"
 
 #[[redirects]]
 #  from = "/api/*"
