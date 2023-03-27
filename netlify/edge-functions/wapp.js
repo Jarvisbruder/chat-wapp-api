@@ -1,5 +1,4 @@
 
-
 export default async (request, context) => {
 
     const token = Deno.env.get("WHATSAPP_TOKEN");
@@ -10,7 +9,7 @@ export default async (request, context) => {
     request.queryStringParameters["hub.mode"] === "subscribe" &&
     request.queryStringParameters["hub.verify_token"] === verify_token) {
   
-      return new Response(request.queryStringParameters["hub.challenge"])
+      return Response.json(request.queryStringParameters["hub.challenge"])
   
     } else if (request.httpMethod === 'POST' && request.body) {
   
@@ -60,11 +59,11 @@ export default async (request, context) => {
   
       }
   
-      return new Response(200)
+      return Response.json(200)
   
     } else {
   
-        return new Response(404)
+        return Response.json(404)
     }
   
   
