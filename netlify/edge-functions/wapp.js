@@ -9,10 +9,10 @@ export default async (request, context) => {
     request.queryStringParameters["hub.mode"] === "subscribe" &&
     request.queryStringParameters["hub.verify_token"] === verify_token) {
 
-      return new Response(
+      return new Response(JSON.stringify(
         {status: 200,
          body: request.queryStringParameters["hub.challenge"],
-        }
+        })
     );
   
     } else if (request.httpMethod === 'POST' && request.body) {
@@ -63,11 +63,11 @@ export default async (request, context) => {
   
       }
   
-      return new Response({status: 200});
+      return new Response(JSON.stringify({status: 200}));
   
     } else {
   
-        return new Response({status: 404, body:"unmatched"});
+        return new Response(JSON.stringify({status: 404, body:"unmatched"}));
 
     }
   
