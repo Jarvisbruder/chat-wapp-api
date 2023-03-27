@@ -6,9 +6,9 @@
   to = "/.netlify/functions/:splat"
   status = 200
 
-#[[edge_functions]]
-#  function = "wapp"
-#  path = "/chat"
+[[edge_functions]]
+  function = "wapp"
+  path = "/"
 
 
 # [[headers]]

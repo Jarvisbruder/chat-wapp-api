@@ -1,4 +1,4 @@
-/* const axios = require("axios").default */
+const axios = require("axios").default
 
 exports.handler = async (event, context) => {
     
@@ -32,7 +32,7 @@ exports.handler = async (event, context) => {
       const from = body.entry[0].changes[0].value.messages[0].from;
       const msg_body = body.entry[0].changes[0].value.messages[0].text.body;
 
-/*       axios({
+      axios({
         method: "POST", // Required, HTTP method, a string, e.g. POST, GET
         url: "https://graph.facebook.com/v12.0/" + phone_number_id + "/messages?access_token=" + token,
         data: {
@@ -41,34 +41,7 @@ exports.handler = async (event, context) => {
           text: { body: `Hi... ${from} with id = ${phone_number_id} I'm, your message is: ${msg_body}` },
         },
         headers: { "Content-Type": "application/json" },
-      }); */
-
-      const payload = {
-        "messaging_product": "whatsapp",
-        "recipient_type": "individual",
-        "to": from,
-        "type": "text",
-        "text": {
-          "preview_url": false,
-          "body": `Hi... ${from}, your message is: ${msg_body}`
-        }
-      }
-
-
-      fetch('https://graph.facebook.com/v12.0/' + phone_number_id + "/messages", {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-        },
-      body: JSON.stringify(payload),
-      redirect:'follow'
-      })
-      .then(res => res.text())
-      .then(result => console.log(result))
-      .catch(error => console.log('error', error));
-      console.log(response)
-
+      });
 
     }
 
