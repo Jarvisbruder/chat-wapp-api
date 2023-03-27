@@ -1,6 +1,4 @@
-
-const fetch = require('node-fetch');
-
+axios = require("axios").default
 
 exports.handler = async (event, context) => {
     
@@ -34,17 +32,17 @@ exports.handler = async (event, context) => {
       const from = body.entry[0].changes[0].value.messages[0].from;
       const msg_body = body.entry[0].changes[0].value.messages[0].text.body;
 
-      await fetch(`https://graph.facebook.com/v12.0/${phone_number_id}/messages?access_token=${token}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          messaging_product: 'whatsapp',
+      axios({
+        method: "POST", // Required, HTTP method, a string, e.g. POST, GET
+        url: "https://graph.facebook.com/v12.0/" + phone_number_id + "/messages?access_token=" + token,
+        data: {
+          messaging_product: "whatsapp",
           to: from,
-          text: { body: `Hi... ${from} with id = ${phone_number_id} I'm, your message is: ${msg_body}` }
-        })
+          text: { body: `Hi... ${from} with id = ${phone_number_id} I'm, your message is: ${msg_body}` },
+        },
+        headers: { "Content-Type": "application/json" },
       });
+
     }
 
     return {
