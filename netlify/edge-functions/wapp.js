@@ -8,8 +8,12 @@ export default async (request, context) => {
     if (request.httpMethod === 'GET' &&
     request.queryStringParameters["hub.mode"] === "subscribe" &&
     request.queryStringParameters["hub.verify_token"] === verify_token) {
-  
-      return Response.json(request.queryStringParameters["hub.challenge"])
+
+      return new Response(
+        {status: 200,
+         body: request.queryStringParameters["hub.challenge"],
+        }
+    );
   
     } else if (request.httpMethod === 'POST' && request.body) {
   
@@ -59,11 +63,12 @@ export default async (request, context) => {
   
       }
   
-      return Response.json(200)
+      return new Response({status: 200});
   
     } else {
   
         return Response.json(404)
+        
     }
   
   
