@@ -64,7 +64,7 @@ export default async (request, context) => {
   
     } else {
   
-        return Response.status(404).body("not matched")
+        return Response("not matched")
     }
   
   
