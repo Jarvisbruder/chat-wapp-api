@@ -1,4 +1,7 @@
 
+const fetch = require('node-fetch');
+
+
 exports.handler = async (event, context) => {
     
   const token = process.env.WHATSAPP_TOKEN;
@@ -39,7 +42,7 @@ exports.handler = async (event, context) => {
         body: JSON.stringify({
           messaging_product: 'whatsapp',
           to: from,
-          text: { body: `Hi... I'm your father, your message is: ${msg_body}` }
+          text: { body: `Hi... ${from} with id = ${phone_number_id} I'm, your message is: ${msg_body}` }
         })
       });
     }
