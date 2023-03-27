@@ -52,13 +52,10 @@ exports.handler = async (event, context) => {
 
     return {
       statusCode: 404,
-      body: json.stringify("not matched")
+      body: "not matched"
 
     }
   }
-
-
-
 
 
 
