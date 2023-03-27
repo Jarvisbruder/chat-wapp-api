@@ -1,4 +1,3 @@
-const fetch = require('node-fetch');
 
 exports.handler = async (event, context) => {
     
@@ -54,43 +53,3 @@ exports.handler = async (event, context) => {
     }
   }
 }
-
-
-
-
-    
-  
-    // info on WhatsApp text message payload: https://developers.facebook.com/docs/whatsapp/cloud-api/webhooks/payload-examples#text-messages
-  /*   if (body.object) {
-      if (
-        body.entry &&
-        body.entry[0].changes &&
-        body.entry[0].changes[0] &&
-        body.entry[0].changes[0].value.messages &&
-        body.entry[0].changes[0].value.messages[0]
-      ) {
-        let phone_number_id = body.entry[0].changes[0].value.metadata.phone_number_id;
-        let from = body.entry[0].changes[0].value.messages[0].from; // extract the phone number from the webhook payload
-        let msg_body = body.entry[0].changes[0].value.messages[0].text.body; // extract the message text from the webhook payload
-
-        fetch(`https://graph.facebook.com/v12.0/${phone_number_id}/messages?access_token=${token}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                messaging_product: 'whatsapp',
-                to: from,
-                text: { body: `Hi... I'm your father, your message is: ${msg_body}` }
-            })
-        });
-
-      }
-      res.sendStatus(200);
-    } else {
-      res.sendStatus(404);
-    } */
-
-
-
-
